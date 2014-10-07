@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<x:Paring xmlns:x="http://producer.etoimik.xtee.riik.ee/producer/etoimik/AnnaIsikuKvalifikatsioonid">
+  <AsjaNR>1-23-4567</AsjaNR>
+  <!--<Viitenumber>1234567890</Viitenumber>-->
+  <IsikuEesnimi>Mari-Liis</IsikuEesnimi>
+  <IsikuNimi>Männik</IsikuNimi>
+  <IsikuSynniKP>1971-01-01</IsikuSynniKP>
+  <!--<Isikukood>47101010033</Isikukood>-->
+</x:Paring>

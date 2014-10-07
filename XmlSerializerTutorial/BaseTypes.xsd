@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://producer.etoimik.xtee.riik.ee/producer/etoimik"
+           targetNamespace="http://producer.etoimik.xtee.riik.ee/producer/etoimik"
+           attributeFormDefault="qualified">
+  <xs:attribute name="type" type="xs:QName"/>
+</xs:schema>
