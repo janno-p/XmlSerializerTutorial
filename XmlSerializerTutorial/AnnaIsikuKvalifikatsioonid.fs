@@ -52,7 +52,7 @@ type AnnaIsikuKvalifikatsioonidParing () =
 [<DebuggerStepThrough>]
 [<DesignerCategory("code")>]
 [<XmlType(AnonymousType=true, Namespace="http://producer.etoimik.xtee.riik.ee/producer/etoimik/AnnaIsikuKvalifikatsioonid")>]
-type AnnaIsikuKvalifikatsioonidVastusAsiMenetlusToimingToiminguOsalineFyysilineIsik () =
+type AnnaIsikuKvalifikatsioonidVastusMenetlusToimingToiminguOsalineFyysilineIsik () =
     [<XmlElement(Form=XmlSchemaForm.Unqualified)>]
     member val Eesnimi = Unchecked.defaultof<string> with get, set
     [<XmlElement(Form=XmlSchemaForm.Unqualified)>]
@@ -69,7 +69,7 @@ type AnnaIsikuKvalifikatsioonidVastusAsiMenetlusToimingToiminguOsalineFyysilineI
 [<DebuggerStepThrough>]
 [<DesignerCategory("code")>]
 [<XmlType(AnonymousType=true, Namespace="http://producer.etoimik.xtee.riik.ee/producer/etoimik/AnnaIsikuKvalifikatsioonid")>]
-type AnnaIsikuKvalifikatsioonidVastusAsiMenetlusToimingToiminguOsalineSanktsioonSyydistusPunktKvalifikatsiooniParagrahv () =
+type AnnaIsikuKvalifikatsioonidVastusMenetlusToimingToiminguOsalineSanktsioonSyydistusPunktKvalifikatsiooniParagrahv () =
     [<XmlElement(Form=XmlSchemaForm.Unqualified, DataType="date", IsNullable=true)>]
     member val AlgusKP = Unchecked.defaultof<Nullable<DateTime>> with get, set
     [<XmlElement(Form=XmlSchemaForm.Unqualified, IsNullable=true)>]
@@ -114,7 +114,7 @@ type AnnaIsikuKvalifikatsioonidVastusAsiMenetlusToimingToiminguOsalineSanktsioon
 [<DebuggerStepThrough>]
 [<DesignerCategory("code")>]
 [<XmlType(AnonymousType=true, Namespace="http://producer.etoimik.xtee.riik.ee/producer/etoimik/AnnaIsikuKvalifikatsioonid")>]
-type AnnaIsikuKvalifikatsioonidVastusAsiMenetlusToimingToiminguOsalineSanktsioonSyydistusPunkt () =
+type AnnaIsikuKvalifikatsioonidVastusMenetlusToimingToiminguOsalineSanktsioonSyydistusPunkt () =
     [<XmlElement(Form=XmlSchemaForm.Unqualified, DataType="date", IsNullable=true)>]
     member val AlgusKP = Unchecked.defaultof<Nullable<DateTime>> with get, set
     [<XmlElement(Form=XmlSchemaForm.Unqualified, IsNullable=true)>]
@@ -133,14 +133,14 @@ type AnnaIsikuKvalifikatsioonidVastusAsiMenetlusToimingToiminguOsalineSanktsioon
     member val SyydistusPunktCSV = Unchecked.defaultof<string> with get, set
     [<XmlArray(Form=XmlSchemaForm.Unqualified, IsNullable=true)>]
     [<XmlArrayItem("KvalifikatsiooniParagrahv", Form=XmlSchemaForm.Unqualified, IsNullable=false)>]
-    member val KvalifikatsiooniParagrahvid = Unchecked.defaultof<AnnaIsikuKvalifikatsioonidVastusAsiMenetlusToimingToiminguOsalineSanktsioonSyydistusPunktKvalifikatsiooniParagrahv[]> with get, set
+    member val KvalifikatsiooniParagrahvid = Unchecked.defaultof<AnnaIsikuKvalifikatsioonidVastusMenetlusToimingToiminguOsalineSanktsioonSyydistusPunktKvalifikatsiooniParagrahv[]> with get, set
 
 [<GeneratedCode("xsd", "4.0.30319.17929")>]
 [<Serializable>]
 [<DebuggerStepThrough>]
 [<DesignerCategory("code")>]
 [<XmlType(AnonymousType=true, Namespace="http://producer.etoimik.xtee.riik.ee/producer/etoimik/AnnaIsikuKvalifikatsioonid")>]
-type AnnaIsikuKvalifikatsioonidVastusAsiMenetlusToimingToiminguOsalineSanktsioon () =
+type AnnaIsikuKvalifikatsioonidVastusMenetlusToimingToiminguOsalineSanktsioon () =
     [<XmlElement(Form=XmlSchemaForm.Unqualified)>]
     member val ObjektID = 0L with get, set
     [<XmlElement(Form=XmlSchemaForm.Unqualified, IsNullable=true)>]
@@ -151,26 +151,26 @@ type AnnaIsikuKvalifikatsioonidVastusAsiMenetlusToimingToiminguOsalineSanktsioon
     member val TyypKL = 0L with get, set
     [<XmlArray(Form=XmlSchemaForm.Unqualified, IsNullable=true)>]
     [<XmlArrayItem("SyydistusPunkt", Form=XmlSchemaForm.Unqualified, IsNullable=false)>]
-    member val AluseksOlevadSyydistusPunktid = Unchecked.defaultof<AnnaIsikuKvalifikatsioonidVastusAsiMenetlusToimingToiminguOsalineSanktsioonSyydistusPunkt[]>
+    member val AluseksOlevadSyydistusPunktid = Unchecked.defaultof<AnnaIsikuKvalifikatsioonidVastusMenetlusToimingToiminguOsalineSanktsioonSyydistusPunkt[]>
 
 [<GeneratedCode("xsd", "4.0.30319.17929")>]
 [<Serializable>]
 [<DebuggerStepThrough>]
 [<DesignerCategory("code")>]
 [<XmlType(AnonymousType=true, Namespace="http://producer.etoimik.xtee.riik.ee/producer/etoimik/AnnaIsikuKvalifikatsioonid")>]
-type AnnaIsikuKvalifikatsioonidVastusAsiMenetlusToimingToiminguOsaline () =
+type AnnaIsikuKvalifikatsioonidVastusMenetlusToimingToiminguOsaline () =
     [<XmlElement(Form=XmlSchemaForm.Unqualified, IsNullable=true)>]
-    member val FyysilineIsik = Unchecked.defaultof<AnnaIsikuKvalifikatsioonidVastusAsiMenetlusToimingToiminguOsalineFyysilineIsik> with get, set
+    member val FyysilineIsik = Unchecked.defaultof<AnnaIsikuKvalifikatsioonidVastusMenetlusToimingToiminguOsalineFyysilineIsik> with get, set
     [<XmlArray(Form=XmlSchemaForm.Unqualified, IsNullable=true)>]
     [<XmlArrayItem("Sanktsioon", Form=XmlSchemaForm.Unqualified, IsNullable=false)>]
-    member val Sanktsioonid = Unchecked.defaultof<AnnaIsikuKvalifikatsioonidVastusAsiMenetlusToimingToiminguOsalineSanktsioon[]> with get, set
+    member val Sanktsioonid = Unchecked.defaultof<AnnaIsikuKvalifikatsioonidVastusMenetlusToimingToiminguOsalineSanktsioon[]> with get, set
 
 [<GeneratedCode("xsd", "4.0.30319.17929")>]
 [<Serializable>]
 [<DebuggerStepThrough>]
 [<DesignerCategory("code")>]
 [<XmlType(AnonymousType=true, Namespace="http://producer.etoimik.xtee.riik.ee/producer/etoimik/AnnaIsikuKvalifikatsioonid")>]
-type AnnaIsikuKvalifikatsioonidVastusAsiMenetlusToimingSeaduseSate () =
+type AnnaIsikuKvalifikatsioonidVastusMenetlusToimingSeaduseSate () =
     [<XmlElement(Form=XmlSchemaForm.Unqualified, DataType="date", IsNullable=true)>]
     member val AlgusKP = Unchecked.defaultof<Nullable<DateTime>> with get, set
     [<XmlElement(Form=XmlSchemaForm.Unqualified, IsNullable=true)>]
@@ -215,7 +215,7 @@ type AnnaIsikuKvalifikatsioonidVastusAsiMenetlusToimingSeaduseSate () =
 [<DebuggerStepThrough>]
 [<DesignerCategory("code")>]
 [<XmlType(AnonymousType=true, Namespace="http://producer.etoimik.xtee.riik.ee/producer/etoimik/AnnaIsikuKvalifikatsioonid")>]
-type AnnaIsikuKvalifikatsioonidVastusAsiMenetlusToiming () =
+type AnnaIsikuKvalifikatsioonidVastusMenetlusToiming () =
     [<XmlElement(Form=XmlSchemaForm.Unqualified, IsNullable=true)>]
     member val AlaLiikKL = Unchecked.defaultof<Nullable<int64>> with get, set
     [<XmlElement(Form=XmlSchemaForm.Unqualified)>]
@@ -224,31 +224,32 @@ type AnnaIsikuKvalifikatsioonidVastusAsiMenetlusToiming () =
     member val ObjektID = 0L with get, set
     [<XmlArray(Form=XmlSchemaForm.Unqualified, IsNullable=true)>]
     [<XmlArrayItem("ToiminguOsaline", Form=XmlSchemaForm.Unqualified, IsNullable=false)>]
-    member val ToiminguOsalised = Unchecked.defaultof<AnnaIsikuKvalifikatsioonidVastusAsiMenetlusToimingToiminguOsaline[]> with get, set
+    member val ToiminguOsalised = Unchecked.defaultof<AnnaIsikuKvalifikatsioonidVastusMenetlusToimingToiminguOsaline[]> with get, set
     [<XmlArray(Form=XmlSchemaForm.Unqualified, IsNullable=true)>]
     [<XmlArrayItem("SeaduseSate", Form=XmlSchemaForm.Unqualified, IsNullable=false)>]
-    member val Alused = Unchecked.defaultof<AnnaIsikuKvalifikatsioonidVastusAsiMenetlusToimingSeaduseSate[]> with get, set
+    member val Alused = Unchecked.defaultof<AnnaIsikuKvalifikatsioonidVastusMenetlusToimingSeaduseSate[]> with get, set
 
 [<GeneratedCode("xsd", "4.0.30319.17929")>]
 [<Serializable>]
 [<DebuggerStepThrough>]
 [<DesignerCategory("code")>]
 [<XmlType(AnonymousType=true, Namespace="http://producer.etoimik.xtee.riik.ee/producer/etoimik/AnnaIsikuKvalifikatsioonid")>]
-type AnnaIsikuKvalifikatsioonidVastusAsiMenetlus () =
+type AnnaIsikuKvalifikatsioonidVastusMenetlus () =
     [<XmlElement(Form=XmlSchemaForm.Unqualified)>]
     member val MenetluseNR = Unchecked.defaultof<string> with get, set
     [<XmlElement(Form=XmlSchemaForm.Unqualified)>]
     member val ObjektID = 0L with get, set
     [<XmlArray(Form=XmlSchemaForm.Unqualified, IsNullable=true)>]
     [<XmlArrayItem("Toiming", Form=XmlSchemaForm.Unqualified, IsNullable=false)>]
-    member val Toimingud = Unchecked.defaultof<AnnaIsikuKvalifikatsioonidVastusAsiMenetlusToiming[]> with get, set
+    member val Toimingud = Unchecked.defaultof<AnnaIsikuKvalifikatsioonidVastusMenetlusToiming[]> with get, set
 
 [<GeneratedCode("xsd", "4.0.30319.17929")>]
 [<Serializable>]
 [<DebuggerStepThrough>]
 [<DesignerCategory("code")>]
-[<XmlType(AnonymousType=true, Namespace="http://producer.etoimik.xtee.riik.ee/producer/etoimik/AnnaIsikuKvalifikatsioonid")>]
-type AnnaIsikuKvalifikatsioonidVastusAsi () =
+[<XmlType(Namespace="http://producer.etoimik.xtee.riik.ee/producer/etoimik/AnnaIsikuKvalifikatsioonid")>]
+[<XmlRoot("Vastus", Namespace="http://producer.etoimik.xtee.riik.ee/producer/etoimik/AnnaIsikuKvalifikatsioonid")>]
+type AnnaIsikuKvalifikatsioonidVastus () =
     [<XmlElement(Form=XmlSchemaForm.Unqualified)>]
     member val AsjaNR = Unchecked.defaultof<string> with get, set
     [<XmlElement(Form=XmlSchemaForm.Unqualified, IsNullable=true)>]
@@ -257,14 +258,4 @@ type AnnaIsikuKvalifikatsioonidVastusAsi () =
     member val ObjektID = 0L with get, set
     [<XmlArray(Form=XmlSchemaForm.Unqualified, IsNullable=true)>]
     [<XmlArrayItem("Menetlus", Form=XmlSchemaForm.Unqualified, IsNullable=false)>]
-    member val Menetlused = Unchecked.defaultof<AnnaIsikuKvalifikatsioonidVastusAsiMenetlus[]> with get, set
-
-[<GeneratedCode("xsd", "4.0.30319.17929")>]
-[<Serializable>]
-[<DebuggerStepThrough>]
-[<DesignerCategory("code")>]
-[<XmlType(Namespace="http://producer.etoimik.xtee.riik.ee/producer/etoimik/AnnaIsikuKvalifikatsioonid")>]
-[<XmlRoot("Vastus", Namespace="http://producer.etoimik.xtee.riik.ee/producer/etoimik/AnnaIsikuKvalifikatsioonid", IsNullable=false)>]
-type AnnaIsikuKvalifikatsioonidVastus () =
-    [<XmlElement(Form=XmlSchemaForm.Unqualified, IsNullable=true)>]
-    member val Asi = Unchecked.defaultof<AnnaIsikuKvalifikatsioonidVastusAsi> with get, set
+    member val Menetlused = Unchecked.defaultof<AnnaIsikuKvalifikatsioonidVastusMenetlus[]> with get, set

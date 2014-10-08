@@ -24,8 +24,10 @@ let main _ =
             | XmlSeverityType.Warning -> Console.WriteLine(args.Message)
             | _ -> Console.WriteLine(args.Exception.ToString()))
 
+        (*
         use input = new StreamReader("AnnaIsikuKvalifikatsioonidParing.xml")
         use reader = XmlReader.Create(input, settings)
+
         let serializer = XmlSerializer(typeof<AnnaIsikuKvalifikatsioonidParing>)
         let paring = serializer.Deserialize(reader) :?> AnnaIsikuKvalifikatsioonidParing
 
@@ -36,6 +38,21 @@ let main _ =
             MessageBox.Show(sprintf "Otsing viitenumbri '%s' alusel ..." paring.Item) |> ignore
         | _ ->
             MessageBox.Show("Tundmatu elemendi tüüp!") |> ignore
+        //*)
+
+        //(*
+        use input = new StreamReader("AnnaIsikuKvalifikatsioonidVastus.xml")
+        use reader = XmlReader.Create(input, settings)
+
+        let serializer = XmlSerializer(typeof<AnnaIsikuKvalifikatsioonidVastus>)
+        let paring = serializer.Deserialize(reader) :?> AnnaIsikuKvalifikatsioonidVastus
+
+        MessageBox.Show(sprintf "Näitan infot asja nr. %s kohta." paring.AsjaNR) |> ignore
+        MessageBox.Show(sprintf "Asjas on %d menetlust." paring.Menetlused.Length) |> ignore
+
+        let alus = paring.Menetlused.[0].Toimingud.[0].Alused.[0]
+        MessageBox.Show(sprintf "Toimingu aluse alguskuupäev on %s." (alus.AlgusKP.GetValueOrDefault().ToString("dd.MM.yyyy"))) |> ignore
+        //*)
     with
     | :? XmlException as xe ->
         MessageBox.Show(xe.Message, "XML Parse Error", MessageBoxButtons.OK, MessageBoxIcon.Error) |> ignore
