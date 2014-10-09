@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="my-bookshelf.fs" />
     <Compile Include="AnnaIsikuKvalifikatsioonid.fs" />
+    <Compile Include="AnnaIsikuKvalifikatsioonid2.fs" />
     <Compile Include="Program.fs" />
     <None Include="App.config" />
     <None Include="my-bookshelf.xsd">
@@ -73,6 +74,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="BaseTypes.xsd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="AnnaIsikuKvalifikatsioonid2.xsd">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

@@ -8,10 +8,9 @@ open System.Xml.Serialization
 open System.Windows.Forms
 open XmlSerializerTutorial.AnnaIsikuKvalifikatsioonid
 
-[<EntryPoint>]
-let main _ = 
+let RussianDoll (schemaName : string) (xmlName : string) func =
     try
-        use schemaReader = XmlReader.Create("AnnaIsikuKvalifikatsioonid.xsd")
+        use schemaReader = XmlReader.Create(schemaName)
 
         let schemas = XmlSchemaSet()
         schemas.Add(XmlSchema.Read(schemaReader, ValidationEventHandler(fun _ _ -> ()))) |> ignore
@@ -19,40 +18,17 @@ let main _ =
         let settings = XmlReaderSettings(Schemas=schemas,
                                          ValidationType=ValidationType.Schema,
                                          ValidationFlags=(XmlSchemaValidationFlags.ProcessIdentityConstraints ||| XmlSchemaValidationFlags.ReportValidationWarnings))
+
         settings.ValidationEventHandler.Add(fun args ->
             match args.Severity with
             | XmlSeverityType.Warning -> Console.WriteLine(args.Message)
             | _ -> Console.WriteLine(args.Exception.ToString()))
 
-        (*
-        use input = new StreamReader("AnnaIsikuKvalifikatsioonidParing.xml")
+        use input = new StreamReader(xmlName)
         use reader = XmlReader.Create(input, settings)
 
-        let serializer = XmlSerializer(typeof<AnnaIsikuKvalifikatsioonidParing>)
-        let paring = serializer.Deserialize(reader) :?> AnnaIsikuKvalifikatsioonidParing
-
-        match paring.ItemElementName with
-        | ItemChoiceType.AsjaNR ->
-            MessageBox.Show(sprintf "Otsing Asja numbri '%s' alusel ..." paring.Item) |> ignore
-        | ItemChoiceType.Viitenumber ->
-            MessageBox.Show(sprintf "Otsing viitenumbri '%s' alusel ..." paring.Item) |> ignore
-        | _ ->
-            MessageBox.Show("Tundmatu elemendi tüüp!") |> ignore
-        //*)
-
-        //(*
-        use input = new StreamReader("AnnaIsikuKvalifikatsioonidVastus.xml")
-        use reader = XmlReader.Create(input, settings)
-
-        let serializer = XmlSerializer(typeof<AnnaIsikuKvalifikatsioonidVastus>)
-        let paring = serializer.Deserialize(reader) :?> AnnaIsikuKvalifikatsioonidVastus
-
-        MessageBox.Show(sprintf "Näitan infot asja nr. %s kohta." paring.AsjaNR) |> ignore
-        MessageBox.Show(sprintf "Asjas on %d menetlust." paring.Menetlused.Length) |> ignore
-
-        let alus = paring.Menetlused.[0].Toimingud.[0].Alused.[0]
-        MessageBox.Show(sprintf "Toimingu aluse alguskuupäev on %s." (alus.AlgusKP.GetValueOrDefault().ToString("dd.MM.yyyy"))) |> ignore
-        //*)
+        let serializer = XmlSerializer(typeof<'T>)
+        serializer.Deserialize(reader) :?> 'T |> func
     with
     | :? XmlException as xe ->
         MessageBox.Show(xe.Message, "XML Parse Error", MessageBoxButtons.OK, MessageBoxIcon.Error) |> ignore
@@ -60,4 +36,49 @@ let main _ =
         MessageBox.Show(ioe.InnerException.Message, "XML Serialization Error", MessageBoxButtons.OK, MessageBoxIcon.Error) |> ignore
     | e ->
         MessageBox.Show(e.Message, "Other Error", MessageBoxButtons.OK, MessageBoxIcon.Error) |> ignore
+
+
+[<EntryPoint>]
+let main _ = 
+    printfn "=========="
+    RussianDoll "AnnaIsikuKvalifikatsioonid.xsd"
+                "AnnaIsikuKvalifikatsioonidParing.xml"
+                (fun (value : AnnaIsikuKvalifikatsioonidParing) ->
+                    match value.ItemElementName with
+                    | ItemChoiceType.AsjaNR ->
+                        printfn "Otsing Asja numbri '%s' alusel ..." value.Item
+                    | ItemChoiceType.Viitenumber ->
+                        printfn "Otsing viitenumbri '%s' alusel ..." value.Item
+                    | _ ->
+                        printfn "Tundmatu elemendi tüüp!")
+
+    printfn "----------"
+    RussianDoll "AnnaIsikuKvalifikatsioonid.xsd"
+                "AnnaIsikuKvalifikatsioonidVastus.xml"
+                (fun (value : AnnaIsikuKvalifikatsioonidVastus) ->
+                    printfn "Näitan infot asja nr. %s kohta." value.AsjaNR
+                    printfn "Asjas on %d menetlust." value.Menetlused.Length
+                    let alus = value.Menetlused.[0].Toimingud.[0].Alused.[0]
+                    printfn "Toimingu aluse alguskuupäev on %s." (alus.AlgusKP.GetValueOrDefault().ToString("dd.MM.yyyy")))
+
+    printfn "=========="
+    RussianDoll "AnnaIsikuKvalifikatsioonid2.xsd"
+                "AnnaIsikuKvalifikatsioonidParing.xml"
+                (fun (value : AnnaIsikuKvalifikatsioonidParing) ->
+                    match value.ItemElementName with
+                    | ItemChoiceType.AsjaNR ->
+                        printfn "Otsing Asja numbri '%s' alusel ..." value.Item
+                    | ItemChoiceType.Viitenumber ->
+                        printfn "Otsing viitenumbri '%s' alusel ..." value.Item
+                    | _ ->
+                        printfn "Tundmatu elemendi tüüp!")
+
+    printfn "----------"
+    RussianDoll "AnnaIsikuKvalifikatsioonid2.xsd"
+                "AnnaIsikuKvalifikatsioonidVastus.xml"
+                (fun (value : AnnaIsikuKvalifikatsioonidVastus) ->
+                    printfn "Näitan infot asja nr. %s kohta." value.AsjaNR
+                    printfn "Asjas on %d menetlust." value.Menetlused.Length
+                    let alus = value.Menetlused.[0].Toimingud.[0].Alused.[0]
+                    printfn "Toimingu aluse alguskuupäev on %s." (alus.AlgusKP.GetValueOrDefault().ToString("dd.MM.yyyy")))
     0
