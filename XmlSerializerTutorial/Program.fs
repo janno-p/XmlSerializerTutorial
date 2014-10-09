@@ -6,9 +6,8 @@ open System.Xml
 open System.Xml.Schema
 open System.Xml.Serialization
 open System.Windows.Forms
-open XmlSerializerTutorial.AnnaIsikuKvalifikatsioonid
 
-let RussianDoll (schemaName : string) (xmlName : string) func =
+let deserialize (schemaName : string) (xmlName : string) func =
     try
         use schemaReader = XmlReader.Create(schemaName)
 
@@ -41,42 +40,42 @@ let RussianDoll (schemaName : string) (xmlName : string) func =
 [<EntryPoint>]
 let main _ = 
     printfn "=========="
-    RussianDoll "AnnaIsikuKvalifikatsioonid.xsd"
+    deserialize "AnnaIsikuKvalifikatsioonid.xsd"
                 "AnnaIsikuKvalifikatsioonidParing.xml"
-                (fun (value : AnnaIsikuKvalifikatsioonidParing) ->
+                (fun (value : XmlSerializerTutorial.AnnaIsikuKvalifikatsioonid.AnnaIsikuKvalifikatsioonidParing) ->
                     match value.ItemElementName with
-                    | ItemChoiceType.AsjaNR ->
+                    | XmlSerializerTutorial.AnnaIsikuKvalifikatsioonid.ItemChoiceType.AsjaNR ->
                         printfn "Otsing Asja numbri '%s' alusel ..." value.Item
-                    | ItemChoiceType.Viitenumber ->
+                    | XmlSerializerTutorial.AnnaIsikuKvalifikatsioonid.ItemChoiceType.Viitenumber ->
                         printfn "Otsing viitenumbri '%s' alusel ..." value.Item
                     | _ ->
                         printfn "Tundmatu elemendi tüüp!")
 
     printfn "----------"
-    RussianDoll "AnnaIsikuKvalifikatsioonid.xsd"
+    deserialize "AnnaIsikuKvalifikatsioonid.xsd"
                 "AnnaIsikuKvalifikatsioonidVastus.xml"
-                (fun (value : AnnaIsikuKvalifikatsioonidVastus) ->
+                (fun (value : XmlSerializerTutorial.AnnaIsikuKvalifikatsioonid.AnnaIsikuKvalifikatsioonidVastus) ->
                     printfn "Näitan infot asja nr. %s kohta." value.AsjaNR
                     printfn "Asjas on %d menetlust." value.Menetlused.Length
                     let alus = value.Menetlused.[0].Toimingud.[0].Alused.[0]
                     printfn "Toimingu aluse alguskuupäev on %s." (alus.AlgusKP.GetValueOrDefault().ToString("dd.MM.yyyy")))
 
     printfn "=========="
-    RussianDoll "AnnaIsikuKvalifikatsioonid2.xsd"
+    deserialize "AnnaIsikuKvalifikatsioonid2.xsd"
                 "AnnaIsikuKvalifikatsioonidParing.xml"
-                (fun (value : AnnaIsikuKvalifikatsioonidParing) ->
+                (fun (value : XmlSerializerTutorial.AnnaIsikuKvalifikatsioonid2.AnnaIsikuKvalifikatsioonidParing) ->
                     match value.ItemElementName with
-                    | ItemChoiceType.AsjaNR ->
+                    | XmlSerializerTutorial.AnnaIsikuKvalifikatsioonid2.ItemChoiceType.AsjaNR ->
                         printfn "Otsing Asja numbri '%s' alusel ..." value.Item
-                    | ItemChoiceType.Viitenumber ->
+                    | XmlSerializerTutorial.AnnaIsikuKvalifikatsioonid2.ItemChoiceType.Viitenumber ->
                         printfn "Otsing viitenumbri '%s' alusel ..." value.Item
                     | _ ->
                         printfn "Tundmatu elemendi tüüp!")
 
     printfn "----------"
-    RussianDoll "AnnaIsikuKvalifikatsioonid2.xsd"
+    deserialize "AnnaIsikuKvalifikatsioonid2.xsd"
                 "AnnaIsikuKvalifikatsioonidVastus.xml"
-                (fun (value : AnnaIsikuKvalifikatsioonidVastus) ->
+                (fun (value : XmlSerializerTutorial.AnnaIsikuKvalifikatsioonid2.AnnaIsikuKvalifikatsioonidVastus) ->
                     printfn "Näitan infot asja nr. %s kohta." value.AsjaNR
                     printfn "Asjas on %d menetlust." value.Menetlused.Length
                     let alus = value.Menetlused.[0].Toimingud.[0].Alused.[0]
